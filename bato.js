@@ -11,6 +11,7 @@
 // ==/UserScript==
 (function () {
     'use strict'
+    alert('Start Hooking ...');
     function hook(object, attr) {
         var func = object[attr]
         object[attr] = function () {
