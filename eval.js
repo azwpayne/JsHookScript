@@ -10,19 +10,20 @@
 // @run-at      document-start
 // ==/UserScript==
 
-(function() {
+(function () {
+    // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
     var eval_new = eval;
     //rewrite function to hook;
-    eval = function(val) {
+    eval = function (val) {
         debugger;
         console.log('val :', val);
         return eval_new(val)
- };
+    };
     // Disguise the prototype
-    eval.toString = function(){
+    eval.toString = function () {
         return "function eval() { [native code] }"
- };
+    };
     eval.length = 1;
 })();
