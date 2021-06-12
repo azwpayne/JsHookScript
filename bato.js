@@ -12,11 +12,11 @@
 (function () {
     'use strict'
     alert('Start Hooking ...');
-    function hook(object, attr) {
-        var func = object[attr]
-        object[attr] = function () {
-            console.log('hooked', object, attr, arguments)
-            var ret = func.apply(object, arguments)
+    function hook(obj, attr) {
+        var func = obj[attr]
+        obj[attr] = function () {
+            console.log('hooked', obj, attr, arguments)
+            var ret = func.apply(obj, arguments)
             debugger
             console.log('result', ret)
             return ret

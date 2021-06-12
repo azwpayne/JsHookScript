@@ -74,20 +74,20 @@
 
 (function () {
     alert('Start Hooking ...');
-    function Hooker(object, attr) {
-        var func = object[attr]
-        object[attr] = function () {
-            console.log('hooked', object, attr, arguments)
-            var result = func.apply(object, arguments)
-            debugger
-            console.log('result', result)
-            return result
+    function Hooker(obj, attr) {
+        var func = obj[attr]
+        obj[attr] = function () {
+            console.log('hooked', obj, attr, arguments);
+            var result = func.apply(obj, arguments);
+            debugger;
+            console.log('result', result);
+            return result;
         }
-        //     // Disguise the prototype
-        eval.toString = function () {
-            return "function eval() { [native code] }"
+        // Disguise the prototype
+        attr.toString = function () {
+            return "function eval() { [native code] }";
         };
-        eval.length = 1;
+        attr.length = 1;
     }
     Hooker(window, 'eval')
 })()
