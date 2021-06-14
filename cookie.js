@@ -10,15 +10,15 @@
 // ==/UserScript==
 
 
-// 最简单的cookie hook
-(function () {
+// The simplest cookie hook
+(function() {
     alert("Starting Hook")
     Object.defineProperty(document, 'cookie', {
-        get: function () {
+        get: function() {
             debugger;
             return;
         },
-        set: function () {
+        set: function() {
             debugger;
             return;
         }
@@ -26,15 +26,15 @@
 }())
 
 
-// 特殊hook
-(function () {
+// Special hook
+(function() {
     alert("Starting Hook")
     var cookie_cache = document.cookie;
     Object.defineProperty(document, 'cookie', {
-        get: function () {
+        get: function() {
             return cookie_cache;
         },
-        set: function (val) {
+        set: function(val) {
             if (val.indexOf('GW1gelwM5YZuT') > -1) {
                 debugger;
             }
@@ -43,9 +43,33 @@
     })
 }())
 
-(function(){
+// Another special hook
+(function() {
+    alert("Starting Hook");
+
+    function hook(obj, attr) {
+        var cookie_cache = obj[attr];
+        Object.defineProperty(obj, attr, {
+            get: function() {
+                return cookie_cache;
+            },
+            set: function(val) {
+                if (val.indexOf('GW1gelwM5YZuT') > -1) {
+                    console.log('cookie: ', val)
+                    debugger;
+                }
+                console.log('cookie: ', val)
+                return cookie_cache;
+            }
+        })
+    }
+    hook(document, 'cookie')
+}())
+
+// 升级版
+(function() {
     alert("Starting Hook")
-    cookie_cache = document.cookie
+    var cookie_cache = document.cookie;
     Object.defineProperty(document, 'cookie', {
         get: function() {
             debugger;
@@ -58,4 +82,4 @@
     })
 }())
 
-
+//封装
