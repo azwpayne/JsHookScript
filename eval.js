@@ -5,7 +5,6 @@
 // @description   Try to Hook Everthing eval
 // @author          Payne
 // @match          *
-// @icon             https://www.google.com/s2/favicons?domain=tampermonkey.net
 // @grant        none
 // @run-at      document-start
 // ==/UserScript==
@@ -91,3 +90,4 @@
     }
     Hooker(window, 'eval')
 })()
+

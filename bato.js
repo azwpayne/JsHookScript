@@ -5,7 +5,6 @@
 // @description   Try to Hook Everthing btoa
 // @author          Payne
 // @match          *
-// @icon             https://www.google.com/s2/favicons?domain=tampermonkey.net
 // @grant        none
 // @run-at      document-start
 // ==/UserScript==
@@ -21,6 +20,11 @@
             console.log('result', ret)
             return ret
         }
+        // Disguise the prototype
+        attr.toString = function () {
+            return "function btoa() { [native code] }";
+        };
+        attr.length = 1;
     }
     hook(window, 'btoa')
 })()
