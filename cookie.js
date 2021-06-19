@@ -44,6 +44,7 @@
 }())
 
 // Another special hook
+// when have 
 (function() {
     alert("Starting Hook");
 
@@ -55,7 +56,7 @@
             },
             set: function(val) {
                 if (val.indexOf('GW1gelwM5YZuT') > -1) {
-                    console.log('cookie: ', val)
+                    console.log('cookie: (indexOf > -1)', val)
                     debugger;
                 }
                 console.log('cookie: ', val)
@@ -66,7 +67,6 @@
     hook(document, 'cookie')
 }())
 
-// 升级版
 (function() {
     alert("Starting Hook")
     var cookie_cache = document.cookie;
@@ -76,10 +76,30 @@
             return cookie_cache;
         },
         set: function() {
+            console.log('Hooked', arguments)
             debugger;
             return cookie_cache;
         }
     })
 }())
 
-//封装
+// Encapsulated
+(function() {
+    alert("Starting Hook")
+
+    function hook(obj, attr) {
+        var attr_cache = obj[attr];
+        Object.defineProperty(obj, attr, {
+            get: function() {
+                debugger;
+                return attr_cache;
+            },
+            set: function() {
+                console.log('Hooked', arguments)
+                debugger;
+                return attr_cache;
+            }
+        })
+    }
+    hook(document, 'cookie')
+}())
