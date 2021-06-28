@@ -9,19 +9,19 @@
 // @run-at      document-start
 // ==/UserScript==
 
-(function () {
+(function() {
     // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
     var eval_new = eval;
     //rewrite function to hook;
-    eval = function (val) {
+    eval = function(val) {
         console.log('Hooked :', val);
         debugger;
         return eval_new(val)
     };
     // Disguise the prototype
-    eval.toString = function () {
+    eval.toString = function() {
         return "function eval() { [native code] }"
     };
     eval.length = 1;
@@ -29,19 +29,19 @@
 // ===================================2===================================
 
 
-(function () {
+(function() {
     // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
     var eval_new = window.eval;
     //rewrite function to hook;
-    window.eval = function (val) {
+    window.eval = function(val) {
         console.log('Hooked :', val, window, eval, arguments);
         debugger;
         return eval_new(val)
     };
     // Disguise the prototype
-    window.eval.toString = function () {
+    window.eval.toString = function() {
         return "function eval() { [native code] }"
     };
     window.eval.length = 1;
@@ -49,13 +49,13 @@
 
 // ====================================3===================================
 
-(function () {
+(function() {
     // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
     var eval_new = window.eval;
     //rewrite function to hook;
-    window.eval = function (val) {
+    window.eval = function(val) {
         console.log('Hooked :', val, window, eval, arguments);
         var result = eval_new.apply(window.eval, arguments)
         debugger;
@@ -63,7 +63,7 @@
         return result
     };
     // Disguise the prototype
-    window.eval.toString = function () {
+    window.eval.toString = function() {
         return "function eval() { [native code] }"
     };
     window.eval.length = 1;
@@ -71,23 +71,22 @@
 
 // ====================================4===================================
 
-(function () {
+(function() {
     alert('Start Hooking ...');
     function Hooker(obj, attr) {
         var func = obj[attr]
-        obj[attr] = function () {
+        obj[attr] = function() {
             console.log('hooked', obj, attr, arguments);
             var result = func.apply(obj, arguments);
             debugger;
             console.log('result', result);
             return result;
-        }
+        };
         // Disguise the prototype
-        attr.toString = function () {
+        attr.toString = function() {
             return "function eval() { [native code] }";
         };
         attr.length = 1;
     }
     Hooker(window, 'eval')
 })()
-

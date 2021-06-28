@@ -13,19 +13,19 @@
     alert('Start Hooking ...');
 
     function hook(obj, attr) {
-        var func = obj[attr]
+        var func = obj[String(attr)]
         obj[attr] = function() {
-                console.log('hooked', obj, attr, arguments)
-                var ret = func.apply(obj, arguments)
-                debugger
-                console.log('result', ret)
-                return ret
-            }
-            // Disguise the prototype
+            console.log('hooked', obj, attr, arguments)
+            let ret = func.apply(obj, arguments);
+            console.log('result', ret);
+            debugger;
+            return ret;
+        };
+        // Disguise the prototype
         attr.toString = function() {
             return "function btoa() { [native code] }";
         };
         attr.length = 1;
-    }
-    hook(window, 'btoa')
+    };
+    hook(window, btoa);
 })()
