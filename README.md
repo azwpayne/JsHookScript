@@ -7,6 +7,7 @@ JsHookScript, All the hook scripts I know
 - [x] Hook Everthing of eval
 - [x] Hook Everthing of btoa
 - [x] Hook Everthing of cookie
+- [x] Hook String of split
 
 
 ## JSHook Theorem
