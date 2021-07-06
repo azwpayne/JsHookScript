@@ -16,6 +16,12 @@ XMLHttpRequest.prototype.setRequestHeader = function () {
             debugger;
             return XMLHttpRequest.prototype.setRequestHeader_cache(val);
         }
+        //
+        XMLHttpRequest.toString = function (){
+            return "function XMLHttpRequest() { [native code] }";
+        };
+        XMLHttpRequest.prototype.setRequestHeader_cache = undefined;
+        XMLHttpRequest.length = 1;
     }
 
     hook()
@@ -25,7 +31,6 @@ XMLHttpRequest.prototype.setRequestHeader = function () {
 // if want hook setHeader whne name is token
 (function () {
     alert('Start Hook');
-
     // create function cache
     function hook() {
         XMLHttpRequest.prototype.setRequestHeader_cache = XMLHttpRequest.prototype.setRequestHeader;
@@ -39,6 +44,7 @@ XMLHttpRequest.prototype.setRequestHeader = function () {
             return XMLHttpRequest.prototype.setRequestHeader_cache(val);
         }
     }
+
     hook()
 }());
 

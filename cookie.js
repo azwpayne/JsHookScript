@@ -45,7 +45,6 @@
 // when have 
 (function () {
     alert("Starting Hook");
-
     function hook(obj, attr) {
         let cookie_cache = obj[attr];
         Object.defineProperty(obj, attr, {
