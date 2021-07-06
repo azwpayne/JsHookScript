@@ -11,9 +11,8 @@
 (function() {
     'use strict'
     alert('Start Hooking ...');
-
     function hook(obj, attr) {
-        var func = obj[String(attr)]
+        let func = obj[String(attr)];
         obj[attr] = function() {
             console.log('hooked', obj, attr, arguments)
             let ret = func.apply(obj, arguments);
@@ -28,4 +27,4 @@
         attr.length = 1;
     };
     hook(window, btoa);
-})()
+})();

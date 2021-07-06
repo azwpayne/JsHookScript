@@ -11,50 +11,48 @@
 
 
 // The simplest cookie hook
-(function() {
+(function () {
     alert("Starting Hook")
     Object.defineProperty(document, 'cookie', {
-        get: function() {
+        get: function () {
             debugger;
-            return;
         },
-        set: function() {
+        set: function () {
             debugger;
-            return;
         }
     })
-}())
+}());
 
 
 // Special hook
-(function() {
+(function () {
     alert("Starting Hook")
-    var cookie_cache = document.cookie;
+    let cookie_cache = document.cookie;
     Object.defineProperty(document, 'cookie', {
-        get: function() {
+        get: function () {
             return cookie_cache;
         },
-        set: function(val) {
+        set: function (val) {
             if (val.indexOf('GW1gelwM5YZuT') > -1) {
                 debugger;
             }
             return cookie_cache;
         }
     })
-}())
+}());
 
 // Another special hook
 // when have 
-(function() {
+(function () {
     alert("Starting Hook");
 
     function hook(obj, attr) {
-        var cookie_cache = obj[attr];
+        let cookie_cache = obj[attr];
         Object.defineProperty(obj, attr, {
-            get: function() {
+            get: function () {
                 return cookie_cache;
             },
-            set: function(val) {
+            set: function (val) {
                 if (val.indexOf('GW1gelwM5YZuT') > -1) {
                     console.log('cookie: (indexOf > -1)', val)
                     debugger;
@@ -64,55 +62,56 @@
             }
         })
     }
-    hook(document, 'cookie')
-}())
 
-(function() {
+    hook(document, 'cookie')
+}());
+
+(function () {
     alert("Starting Hook")
-    var cookie_cache = document.cookie;
+    let cookie_cache = document.cookie;
     Object.defineProperty(document, 'cookie', {
-        get: function() {
+        get: function () {
             debugger;
             return cookie_cache;
         },
-        set: function() {
+        set: function () {
             console.log('Hooked', arguments)
             debugger;
             return cookie_cache;
         }
     })
-}())
-
+}());
 // Encapsulated
-(function() {
+(function () {
     alert("Starting Hook")
 
     function hook(obj, attr) {
-        var attr_cache = obj[attr];
+        let attr_cache = obj[attr];
         Object.defineProperty(obj, attr, {
-            get: function() {
+            get: function () {
                 debugger;
                 return attr_cache;
             },
-            set: function() {
+            set: function () {
                 console.log('Hooked', arguments)
                 debugger;
                 return attr_cache;
             }
         })
     }
-    hook(document, 'cookie')
-}())
-// 
 
-(function() {
+    hook(document, 'cookie')
+}());
+
+
+(function () {
     alert('start Hook');
-    var cookie_cache = document.cookie;
+    let cookie_cache = document.cookie;
     Object.defineProperty(document, 'cookie', {
-        get: function() {
+        get: function () {
             return cookie_cache;
         },
-        set: function(val) {
+        set: function (val) {
             console.log("setting cookie:", val);
             if (val.indexOf('GW1gelwM5YZuT') > -1) {
                 console.log('cookie: (indexOf > -1)', val)
@@ -122,17 +121,20 @@
             var ncookie = cookie.split("=");
             var flag = false;
             var cache = cookie_cache.split("; ");
-            cache = cache.map(function(a) {
+            cache = cache.map(function (a) {
                 if (a.split("=")[0] === ncookie[0]) {
                     flag = true;
                     return cookie;
-                };
+                }
+                ;
                 return a;
             });
             cookie_cache = cache.join(";");
-            if (!flag) { cookie_cache += cookie + "; "; }
+            if (!flag) {
+                cookie_cache += cookie + "; ";
+            }
             this._value = val;
             return cookie_cache;
         }
     });
-}())
+}());

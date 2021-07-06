@@ -1,12 +1,13 @@
 // Hook Function
-(function () {
-    var _construtor = constructor;
-    Function.prototype.constructor = function (d) {
+(function() {
+    alert(1);
+    let construtor_cache = constructor;
+    Function.prototype.constructor = function(d) {
         if (d === "debugger") {
             console.log("constructor:", d);
             debugger;
             return null;
         }
-        return _construtor(d);
+        return construtor_cache(d);
     }
 }())

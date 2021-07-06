@@ -13,7 +13,7 @@
     // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
-    var eval_new = eval;
+    let eval_new = eval;
     //rewrite function to hook;
     eval = function(val) {
         console.log('Hooked :', val);
@@ -33,7 +33,7 @@
     // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
-    var eval_new = window.eval;
+    let eval_new = window.eval;
     //rewrite function to hook;
     window.eval = function(val) {
         console.log('Hooked :', val, window, eval, arguments);
@@ -53,11 +53,11 @@
     // 0.Tips
     alert('Start Hooking ...');
     // Building replica function objects,  Prepare the hook
-    var eval_new = window.eval;
+    let eval_new = window.eval;
     //rewrite function to hook;
     window.eval = function(val) {
         console.log('Hooked :', val, window, eval, arguments);
-        var result = eval_new.apply(window.eval, arguments)
+        let result = eval_new.apply(window.eval, arguments)
         debugger;
         console.log('result', result)
         return result
@@ -74,10 +74,10 @@
 (function() {
     alert('Start Hooking ...');
     function Hooker(obj, attr) {
-        var func = obj[attr]
+        let func = obj[attr]
         obj[attr] = function() {
             console.log('hooked', obj, attr, arguments);
-            var result = func.apply(obj, arguments);
+            let result = func.apply(obj, arguments);
             debugger;
             console.log('result', result);
             return result;
