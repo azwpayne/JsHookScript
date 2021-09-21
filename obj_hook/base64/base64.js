@@ -1,22 +1,3 @@
-// ==UserScript==
-// @name             Hook Everthing of btoa
-// @namespace    http://tampermonkey.net/
-// @version          0.1
-// @description   Try to Hook Everthing btoa
-// @author          Payne
-// @match          *
-// @grant        none
-// @run-at      document-start
-// ==/UserScript==
-
-/* *
-* Hook btoa
-* btoa: In JavaScript, it is a Base64 Encoding function
-* atob: In JavaScript, it is a Base64 Decoding function
-* menu:
-*   1.The simplest hook
-*   2.
-*  */
 
 base64Hook_1 = function () {
     'use strict'
