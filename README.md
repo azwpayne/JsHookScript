@@ -1,6 +1,9 @@
 # JsHookScript
 
-JsHookScript, All the hook scripts I know
+We know that JS reverse analysis is very slow and difficult, so how to simplify this process. 
+Hook will benefit you and me a lot                                     
+
+JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 
 ## JSHook  menu(PC)
 
