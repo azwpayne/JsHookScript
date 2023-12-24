@@ -25,4 +25,3 @@ Object.defineProperty(document, 'cookie', {
         return cookie_cache;
     },
 });
-        

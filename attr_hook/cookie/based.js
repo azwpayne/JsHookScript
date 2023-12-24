@@ -1,12 +1,12 @@
 // Special hook
 ~function () {
-    alert("Starting Hook")
+    alert("Starting Hook");
     let cookie_cache = document.cookie;
     Object.defineProperty(document, 'cookie', {
-        get: function () {
+        get() {
             return cookie_cache;
         },
-        set: function (val) {
+        set(val) {
             if (val.indexOf('GW1gelwM5YZuT') > -1) {
                 debugger;
             }

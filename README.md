@@ -1,7 +1,7 @@
 # JsHookScript
 
-We know that JS reverse analysis is very slow and difficult, so how to simplify this process. 
-Hook will benefit you and me a lot                                     
+We know that JS reverse analysis is very slow and difficult, so how to simplify this process.
+Hook will benefit you and me a lot
 
 JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 
@@ -20,7 +20,6 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 
 - [x] Hook String of split
 - [x] Hook Everthing of Function
-
 
 ## JSHook Theorem
 
@@ -44,9 +43,9 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 
    ```js
    func = function() {
-   	// your hook logic
-   	
-   	return func_cache;
+    // your hook logic
+    
+    return func_cache;
    }
    ```
 
@@ -59,9 +58,9 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 (function () {
     // 0.Tips A hint might be a good choice
     alert('Start Hooking ...');
-  	// 1.Building replica function objects,  Prepare the hook
+   // 1.Building replica function objects,  Prepare the hook
     function Hooker(obj, attr) {
-      	// 2. rewrite function to hook;
+       // 2. rewrite function to hook;
         var func = obj[attr]
         obj[attr] = function () {
             console.log('hooked', obj, attr, arguments);
@@ -113,7 +112,6 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
    })
    ```
 
-
 > note：
 >
 > When all objects are bound before binding, it becomes invalid
@@ -122,11 +120,11 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 
 ```js
 (function() {
-  	// 0.Tips A hint might be a good choice
+   // 0.Tips A hint might be a good choice
     alert("Starting Hook")
     // 1. Building replica function objects,  Prepare the hook
     cookie_cache = document.cookie
-  	// 2. Bind monitor function to hook;
+   // 2. Bind monitor function to hook;
     Object.defineProperty(document, 'cookie', {
         get: function() {
             debugger;
@@ -162,9 +160,9 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
 
    ```js
    func = function() {
-   	// your hook logic
-   	
-   	return func_cache;
+    // your hook logic
+    
+    return func_cache;
    }
    ```
 
@@ -173,7 +171,7 @@ JsHoook Script is Js Hook axiom。it want tell you how to use js to hook
    ```js
    1.Disguise toString
    attr.toString = function () {
-   		return "function func() { [native code] }";
+     return "function func() { [native code] }";
    };
    2. Disguise length
    attr.length = 1;
@@ -185,7 +183,7 @@ Sample code
 
 ```js
 (function () {
-  	// 0.Tips A hint might be a good choice
+   // 0.Tips A hint might be a good choice
     alert('Start Hook');
     function hook() {
         // 1.Building replica function Prototype chain objects,  Prepare the hook
@@ -207,3 +205,7 @@ Sample code
 }());
 ```
 
+
+## AST-Hook
+
+[ast-hook-for-js-RE](https://github.com/JSREI/ast-hook-for-js-RE)

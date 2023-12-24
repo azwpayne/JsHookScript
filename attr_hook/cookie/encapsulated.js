@@ -4,11 +4,11 @@
     function hook(obj, attr) {
         let attr_cache = obj[attr];
         Object.defineProperty(obj, attr, {
-            get: function () {
+            get() {
                 debugger;
                 return attr_cache;
             },
-            set: function () {
+            set() {
                 console.log('Hooked', arguments)
                 debugger;
                 return attr_cache;
