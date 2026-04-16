@@ -1,0 +1,29 @@
+{
+  "name": "jshookscript",
+  "version": "1.0.0",
+  "description": "A curated collection of browser-side JavaScript hooking snippets for reverse engineering, security research, and dynamic analysis.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint src tests --fix"
+  },
+  "keywords": [
+    "javascript",
+    "hook",
+    "reverse-engineering",
+    "browser",
+    "debugging"
+  ],
+  "author": "Payne",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^3.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0",
+    "jsdom": "^26.0.0",
+    "vitest": "^3.0.0"
+  }
+}
